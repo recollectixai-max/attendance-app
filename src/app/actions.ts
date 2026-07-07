@@ -40,11 +40,11 @@ export async function punchIn(idToken: string, lat: number, lng: number) {
         }
 
         const isRegularShift = (startHour === 10 && startMin === 0);
-        const currentGracePeriod = isRegularShift ? 10 : 0; // Only 10:00 AM gets 10 mins grace. Others 0.
+        const currentGracePeriod = isRegularShift ? 15 : 0; // Only 10:00 AM gets 10 mins grace. Others 0.
 
         let shiftDurationHours = 9;
         if (startHour === 13) {
-            shiftDurationHours = 6.5; // 1:00 PM - 7:30 PM (6.5 Hours)
+            shiftDurationHours = 6; // 1:00 PM - 7:30 PM (6.5 Hours)
         } else if (startHour === 10 && startMin === 30) {
             shiftDurationHours = 9; // 10:30 - 7:30 (9 Hours)
         }

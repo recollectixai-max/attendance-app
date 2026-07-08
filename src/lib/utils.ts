@@ -34,7 +34,7 @@ function deg2rad(deg: number) {
 export const OFFICE_START_HOUR = 10;
 export const OFFICE_START_MINUTE = 0;
 export const OFFICE_END_HOUR = 19; // 7 PM
-export const GRACE_PERIOD_MINUTES = 10;
+export const GRACE_PERIOD_MINUTES = 15;
 export const MAX_DISTANCE_METERS = 100;
 
 export function formatDuration(minutes: number) {

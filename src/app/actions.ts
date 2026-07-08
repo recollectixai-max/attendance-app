@@ -178,7 +178,7 @@ export async function punchOut(idToken: string, lat: number, lng: number, forceH
         // Determine Shift Duration (try to respect shiftStart if stored, else default 9h)
         let shiftDurationHours = 9;
         const shiftStart = data?.shiftStart || "10:00";
-        if (shiftStart.startsWith("13")) shiftDurationHours = 6.5;
+        if (shiftStart.startsWith("13")) shiftDurationHours = 6;
 
         // Determine Shift Config (Start Hour/Min)
         let startHour = 10;
@@ -193,7 +193,7 @@ export async function punchOut(idToken: string, lat: number, lng: number, forceH
         }
 
         const isRegularShift = (startHour === 10 && startMin === 0);
-        const currentGracePeriod = isRegularShift ? 10 : 0;
+        const currentGracePeriod = isRegularShift ? 15 : 0;
 
         // Reconstruct Standard Start Time UTC
         // todayStr is already defined in Scope (Step 3)
@@ -318,11 +318,11 @@ export async function updateAttendanceRecord(idToken: string, recordId: string, 
         }
 
         const isRegularShift = (startHour === 10 && startMin === 0);
-        const currentGracePeriod = isRegularShift ? 10 : 0;
+        const currentGracePeriod = isRegularShift ? 15 : 0;
 
         // Re-calcaulte duration locally for update
         let shiftDurationHours = 9;
-        if (startHour === 13) shiftDurationHours = 6.5;
+        if (startHour === 13) shiftDurationHours = 6;
 
         // Recalculate Late and Required Out based on (new or old) Punch In
         const officeStartStr = `${dateStr} ${String(startHour).padStart(2, '0')}:${String(startMin).padStart(2, '0')}:00`;
